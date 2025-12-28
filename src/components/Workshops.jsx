@@ -31,55 +31,81 @@ const LevelAccordion = ({ title, subtitle, content, isOpen, onClick }) => {
     );
 };
 
-export default function Workshops() {
+export default function Workshops({ language }) {
     const [openIndex, setOpenIndex] = useState(0);
 
     const levels = [
         {
-            title: "Level 1 – Beginner (Basics)",
-            subtitle: "Grundstein für alle Tänzer",
-            content: ["Grundschritte", "Rhythmus & Timing", "Haltung & Führung", "Basis-Technik"]
+            level: 'Level 1',
+            title: language === 'DE' ? 'Beginner Basics' : 'Beginner Basics', // Assuming 'Beginner Basics' is the same in both languages for the title
+            subtitle: language === 'DE' ? 'Grundstein für alle Tänzer' : 'Foundation for all dancers',
+            content: language === 'DE'
+                ? ['Grundschritte', 'Rhythmus & Timing', 'Haltung & Führung', 'Basis-Technik']
+                : ['Basic steps', 'Rhythm & Timing', 'Posture & Leading/Following', 'Basic technique'],
         },
         {
-            title: "Level 2 – Intermediate (Medium)",
-            subtitle: "Zentrales Level mit dem meisten Lernfortschritt",
-            content: ["Figuren & Variationen", "Kombinationen & Übergänge", "Musicality", "Aufbau & Anwendung der Basics"]
+            level: 'Level 2',
+            title: language === 'DE' ? 'Improver' : 'Improver', // Assuming 'Improver' is the same
+            subtitle: language === 'DE' ? 'Zentrales Level mit dem meisten Lernfortschritt' : 'Central level with most learning progress',
+            content: language === 'DE'
+                ? ['Figuren & Variationen', 'Kombinationen & Übergänge', 'Musicality', 'Aufbau & Anwendung der Basics']
+                : ['Figures & variations', 'Combinations & transitions', 'Musicality', 'Building & applying basics'],
         },
         {
-            title: "Level 3 – Advanced",
-            subtitle: "Sicherheit im Social Dancing",
-            content: ["Komplexe Kombinationen", "Technik & Ausdruck", "Styling & Feinschliff"]
-        }
+            level: 'Level 3',
+            title: language === 'DE' ? 'Intermediate' : 'Intermediate',
+            description: language === 'DE'
+                ? 'Meistere komplexe Kombinationen und verfeinere deine Technik. Dieser Kurs hilft dir, deinen Ausdruck und dein Styling zu entwickeln und dich im Social Dancing sicher zu fühlen.'
+                : 'Master complex combinations and refine your technique. This course helps you develop your expression and styling, and feel confident in social dancing.',
+        },
     ];
 
     return (
-        <section className="py-20 bg-white">
-            <div className="container max-w-4xl">
+        <section className="py-20 bg-bg-secondary">
+            <div className="container max-w-3xl px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl text-primary mb-6">Workshops & Kurssystem</h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Monatliche Workshops (4 Wochen) – Einstieg jeden Monat neu möglich.
-                        Teilnahme solo oder als Paar.
+                    <h2 className="text-3xl md:text-5xl font-serif mb-6">
+                        {language === 'DE' ? 'Tanzlevels & Workshops' : 'Dance Levels & Workshops'}
+                    </h2>
+                    <p className="text-lg text-text/80 font-light">
+                        {language === 'DE'
+                            ? 'Finde das passende Level für dich. Wir bieten Workshops für alle Erfahrungsstufen an.'
+                            : 'Find the right level for you. We offer workshops for all experience levels.'}
                     </p>
                 </div>
 
-                <div className="space-y-2">
-                    {levels.map((level, index) => (
-                        <LevelAccordion
-                            key={index}
-                            title={level.title}
-                            subtitle={level.subtitle}
-                            content={level.content}
-                            isOpen={openIndex === index}
-                            onClick={() => setOpenIndex(index === openIndex ? -1 : index)}
-                        />
+                <div className="space-y-4">
+                    {levels.map((item, index) => (
+                        <div key={index} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                            <button
+                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                            >
+                                <div>
+                                    <span className="text-accent text-sm font-bold uppercase tracking-wider block mb-1">
+                                        {item.level}
+                                    </span>
+                                    <h3 className="text-xl font-serif font-medium">{item.title}</h3>
+                                </div>
+                                {openIndex === index ? (
+                                    <ChevronUp className="w-6 h-6 text-text/50" />
+                                ) : (
+                                    <ChevronDown className="w-6 h-6 text-text/50" />
+                                )}
+                            </button>
+                            <div
+                                className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'
+                                    }`}
+                            >
+                                <p className="text-text/70 leading-relaxed">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
                     ))}
-                </div>
-
-                <div className="text-center mt-12 text-sm text-gray-500 italic">
-                    * Kein automatischer Level-Aufstieg – jedes Lerntempo ist willkommen.
                 </div>
             </div>
         </section>
     );
 }
+

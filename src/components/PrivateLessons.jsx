@@ -1,33 +1,68 @@
+
 import React from 'react';
+import { Star, Music, Award } from 'lucide-react';
 
-export default function PrivateLessons() {
+export default function PrivateLessons({ language }) {
     return (
-        <section className="py-20 bg-primary text-text-light">
-            <div className="container text-center">
-                <h2 className="text-4xl font-serif mb-12">Exklusiver Unterricht</h2>
+        <section className="py-20 bg-bg-secondary">
+            <div className="container px-4">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-serif mb-6">
+                        {language === 'DE' ? 'Privatunterricht' : 'Private Lessons'}
+                    </h2>
+                    <p className="text-lg text-text/80 font-light max-w-2xl mx-auto">
+                        {language === 'DE'
+                            ? 'Individuelles Training für dich. Perfektioniere deinen Stil oder lerne in deinem eigenen Tempo.'
+                            : 'Individual training for you. Perfect your style or learn at your own pace.'}
+                    </p>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div className="bg-white/5 border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-colors">
-                        <h3 className="text-2xl font-bold mb-4 text-accent">Privatstunden</h3>
-                        <p className="opacity-80 mb-6 min-h-[48px]">
-                            Individuelles Training mit Melanie oder Lucio. Perfekt für schnellen Fortschritt oder speziellen Fokus.
+                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    {/* Wedding Dance */}
+                    <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                        <div className="w-12 h-12 bg-[#F9EBEB] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <Star className="w-6 h-6 text-accent" />
+                        </div>
+                        <h3 className="text-xl font-serif font-medium mb-3">
+                            {language === 'DE' ? 'Hochzeitstanz' : 'Wedding Dance'}
+                        </h3>
+                        <p className="text-text/70 text-sm">
+                            {language === 'DE'
+                                ? 'Euer Moment. Wir choreografieren euren unvergesslichen ersten Tanz.'
+                                : 'Your moment. We choreograph your unforgettable first dance.'}
                         </p>
-                        <button className="text-white underline hover:text-accent decoration-accent underline-offset-4">
-                            Privatstunde anfragen
-                        </button>
                     </div>
 
-                    <div className="bg-white/5 border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-colors">
-                        <h3 className="text-2xl font-bold mb-4 text-accent">Specials & Events</h3>
-                        <p className="opacity-80 mb-6 min-h-[48px]">
-                            Hochzeitstänze, Choreografien für Events oder Workshops in Reggaeton & Kizomba.
+                    {/* Technique */}
+                    <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                        <div className="w-12 h-12 bg-[#E9F2EB] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <Award className="w-6 h-6 text-accent" />
+                        </div>
+                        <h3 className="text-xl font-serif font-medium mb-3">
+                            {language === 'DE' ? 'Technik & Styling' : 'Technique & Styling'}
+                        </h3>
+                        <p className="text-text/70 text-sm">
+                            {language === 'DE'
+                                ? 'Intensives Coaching für bessere Körperhaltung, Drehtechnik und Ausdruck.'
+                                : 'Intensive coaching for better posture, spinning technique, and expression.'}
                         </p>
-                        <button className="text-white underline hover:text-accent decoration-accent underline-offset-4">
-                            Mehr erfahren
-                        </button>
+                    </div>
+
+                    {/* Show */}
+                    <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <Music className="w-6 h-6 text-accent" />
+                        </div>
+                        <h3 className="text-xl font-serif font-medium mb-3">Show & Performance</h3>
+                        <p className="text-text/70 text-sm">
+                            {language === 'DE'
+                                ? 'Vorbereitung für Auftritte, Shows oder Wettbewerbe.'
+                                : 'Preparation for performances, shows, or competitions.'}
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     );
 }
+

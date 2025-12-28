@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 
 import logoImg from '../assets/logo_gold.png';
 
-export default function Header() {
+export default function Header({ language, setLanguage }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,12 +16,16 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const toggleLanguage = (lang) => {
+        setLanguage(lang);
+    };
+
     const navLinks = [
-        { name: 'Familie', href: '#family' },
-        { name: 'Kurse', href: '#courses' },
-        { name: 'Workshops', href: '#workshops' },
-        { name: 'Partys', href: '#events' },
-        { name: 'Kontakt', href: '#contact' },
+        { name: language === 'DE' ? 'Familie' : 'Family', href: '#family' },
+        { name: language === 'DE' ? 'Kurse' : 'Courses', href: '#courses' },
+        { name: language === 'DE' ? 'Workshops' : 'Workshops', href: '#workshops' },
+        { name: language === 'DE' ? 'Partys' : 'Parties', href: '#events' },
+        { name: language === 'DE' ? 'Kontakt' : 'Contact', href: '#contact' },
     ];
 
     return (
@@ -30,9 +34,8 @@ export default function Header() {
                 }`}
         >
             <div className="container flex justify-between items-center">
-                {/* Logo */}
-                <a href="#" className={`flex items-center gap-3 font-serif text-2xl font-medium tracking-wide transition-colors ${isScrolled ? 'text-primary' : 'text-text-light'}`}>
-                    <img src={logoImg} alt="AyDiosMio Logo" className="h-10 w-auto" />
+                {/* Logo Text only */}
+                <a href="#" className={`font-serif text-2xl font-medium tracking-wide transition-colors ${isScrolled ? 'text-primary' : 'text-text-light'}`}>
                     AyDiosMio
                 </a>
 
@@ -49,11 +52,28 @@ export default function Header() {
                         </a>
                     ))}
 
+                    {/* Language Switcher */}
+                    <div className={`flex items-center gap-2 text-sm font-medium ${isScrolled ? 'text-primary' : 'text-text-light'}`}>
+                        <button
+                            onClick={() => toggleLanguage('DE')}
+                            className={`transition-colors hover:text-accent ${language === 'DE' ? 'text-accent font-bold' : 'opacity-70'}`}
+                        >
+                            DE
+                        </button>
+                        <span className="opacity-50">|</span>
+                        <button
+                            onClick={() => toggleLanguage('EN')}
+                            className={`transition-colors hover:text-accent ${language === 'EN' ? 'text-accent font-bold' : 'opacity-70'}`}
+                        >
+                            EN
+                        </button>
+                    </div>
+
                     <button className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-glow hover:scale-105 ${isScrolled
                         ? 'bg-primary text-white hover:bg-black'
                         : 'bg-accent text-primary hover:bg-white'
                         }`}>
-                        Schnupperstunde buchen
+                        {language === 'DE' ? 'Schnupperstunde buchen' : 'Book Trial Class'}
                     </button>
                 </nav>
 
@@ -86,8 +106,29 @@ export default function Header() {
                             {link.name}
                         </a>
                     ))}
-                    <button className="bg-accent text-primary px-8 py-3 rounded-full text-lg font-bold shadow-glow">
-                        Schnupperstunde buchen
+
+                    {/* Mobile Language Switcher */}
+                    <div className="flex items-center gap-4 text-xl font-serif text-primary">
+                        <button
+                            onClick={() => { toggleLanguage('DE'); setMobileMenuOpen(false); }}
+                            className={`${language === 'DE' ? 'text-accent font-bold' : 'opacity-70'}`}
+                        >
+                            DE
+                        </button>
+                        <span className="opacity-30">|</span>
+                        <button
+                            onClick={() => { toggleLanguage('EN'); setMobileMenuOpen(false); }}
+                            className={`${language === 'EN' ? 'text-accent font-bold' : 'opacity-70'}`}
+                        >
+                            EN
+                        </button>
+                    </div>
+
+                    <button className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-glow hover:scale-105 ${isScrolled
+                        ? 'bg-primary text-white hover:bg-black'
+                        : 'bg-accent text-primary hover:bg-white'
+                        }`}>
+                        {language === 'DE' ? 'Schnupperstunde buchen' : 'Book Trial Class'}
                     </button>
                 </div>
             )}
