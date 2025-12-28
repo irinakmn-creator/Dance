@@ -37,7 +37,7 @@ export default function TrialClasses() {
                 </div>
 
                 <div>
-                    <button className="bg-accent hover:bg-white text-primary font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl">
+                    <button className="bg-accent hover:bg-white text-primary font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-glow">
                         Schnupperstunde buchen
                     </button>
                 </div>

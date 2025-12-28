@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-    /* Colors */
-    --color-primary: #1A1A1A;
-    /* Black/Charcoal */
-    --color-accent: #D4AF37;
-    /* Gold */
-    --color-bg-secondary: #F5F5F0;
-    /* Soft Sand */
-    --color-text: #333333;
-    /* Dark Grey */
-    --color-text-light: #F9F9F9;
-    /* Off-white */
-    --color-sage: #9CAF88;
-    --color-blush: #E8D5D5;
+    /* Colors - Redesigned from Lovable Reference */
+    --color-primary: #1F1F1F;
+    /* Soft Charcoal */
+    --color-accent: #D9A520;
+    /* Rich Amber Gold */
+    --color-bg-secondary: #FBFAF9;
+    /* Warm Paper White */
+    --color-text: #1F1F1F;
+    --color-text-light: #FFFFFF;
+    --color-sage: #E5E7EB;
+    --color-blush: #F3F4F6;
 
     /* Fonts */
-    --font-serif: "Playfair Display", serif;
+    --font-serif: "Georgia", serif;
     --font-sans: "Inter", sans-serif;
 
-    /* Container centered by default in v4 needs manual utility or plugin, but let's just add the class or use custom utility */
+    /* Utilities */
+    --radius-card: 1rem;
 }
 
 /* Custom Base Styles */
@@ -27,6 +26,8 @@ body {
     background-color: var(--color-bg-secondary);
     color: var(--color-text);
     font-family: var(--font-sans);
+    font-weight: 300;
+    /* Primary body text weight from analysis */
     -webkit-font-smoothing: antialiased;
 }
 
@@ -37,10 +38,11 @@ h4,
 h5,
 h6 {
     font-family: var(--font-serif);
-    font-weight: 700;
+    font-weight: 500;
+    /* Primary heading weight from analysis */
 }
 
-/* Re-adding container utility manually since v4 specific config is different */
+/* Container */
 .container {
     width: 100%;
     margin-left: auto;
@@ -48,7 +50,15 @@ h6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     max-width: 1200px;
-    /* Matching previous variable */
+}
+
+/* Sticky Header Scroll Effect */
+.glass-header {
+    background-color: rgba(251, 250, 249, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for depth */
 }
 
 /* Custom Animation Keyframes */
@@ -66,4 +76,8 @@ h6 {
 
 .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.shadow-glow {
+    box-shadow: 0 4px 14px 0 rgba(217, 165, 32, 0.39);
 }

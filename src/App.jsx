@@ -11,9 +11,12 @@ import Vouchers from './components/Vouchers';
 import LocationContact from './components/LocationContact';
 import Footer from './components/Footer';
 
+import Header from './components/Header';
+
 function App() {
     return (
         <div className="min-h-screen bg-bg-secondary font-sans text-text overflow-x-hidden">
+            <Header />
             {/* 
           Main Application Assembly 
           Each component represents a Section from the prompt.

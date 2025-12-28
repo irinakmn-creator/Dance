@@ -24,7 +24,7 @@ export default function Hero() {
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <button className="bg-accent text-primary font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105 text-lg">
+                    <button className="bg-accent text-primary font-semibold py-4 px-8 rounded-full shadow-glow hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105 text-lg">
                         Jetzt Schnupperstunde buchen
                     </button>
 
