@@ -1,6 +1,6 @@
 import React from 'react';
-import melanieImg from '../assets/melanie_teacher.png';
-import lucioImg from '../assets/lucio_teacher.png';
+import melanieImg from '../assets/melanie_teacher_new.jpg';
+import lucioImg from '../assets/lucio_teacher_new.jpg';
 
 export default function Teachers() {
     return (
@@ -12,10 +12,10 @@ export default function Teachers() {
                     {/* Melanie */}
                     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col md:flex-row">
                         <div className="md:w-1/2 h-64 md:h-auto">
-                            <img src={melanieImg} alt="Melanie Mayerhofer" className="w-full h-full object-cover" />
+                            <img src={melanieImg} alt="Melanie" className="w-full h-full object-cover" />
                         </div>
                         <div className="p-8 md:w-1/2 flex flex-col justify-center">
-                            <h3 className="text-2xl font-serif font-bold mb-2">Melanie Mayerhofer</h3>
+                            <h3 className="text-2xl font-serif font-bold mb-2">Melanie</h3>
                             <p className="text-accent font-medium mb-4">Gründerin & Tanzlehrerin</p>
                             <ul className="text-sm space-y-2 opacity-80 list-disc list-inside marker:text-accent">
                                 <li>Über 12 Jahre Salsa-Erfahrung</li>

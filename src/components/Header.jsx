@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+import logoImg from '../assets/logo_gold.png';
+
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,7 +31,8 @@ export default function Header() {
         >
             <div className="container flex justify-between items-center">
                 {/* Logo */}
-                <a href="#" className={`font-serif text-2xl font-medium tracking-wide transition-colors ${isScrolled ? 'text-primary' : 'text-text-light'}`}>
+                <a href="#" className={`flex items-center gap-3 font-serif text-2xl font-medium tracking-wide transition-colors ${isScrolled ? 'text-primary' : 'text-text-light'}`}>
+                    <img src={logoImg} alt="AyDiosMio Logo" className="h-10 w-auto" />
                     AyDiosMio
                 </a>
 
@@ -47,8 +50,8 @@ export default function Header() {
                     ))}
 
                     <button className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-glow hover:scale-105 ${isScrolled
-                            ? 'bg-primary text-white hover:bg-black'
-                            : 'bg-accent text-primary hover:bg-white'
+                        ? 'bg-primary text-white hover:bg-black'
+                        : 'bg-accent text-primary hover:bg-white'
                         }`}>
                         Schnupperstunde buchen
                     </button>
