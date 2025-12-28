@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-primary: #1A1A1A;
+    /* Black/Charcoal */
+    --color-accent: #D4AF37;
+    /* Gold */
+    --color-bg-secondary: #F5F5F0;
+    /* Soft Sand */
+    --color-text: #333333;
+    /* Dark Grey */
+    --color-text-light: #F9F9F9;
+    /* Off-white */
+    --color-sage: #9CAF88;
+    --color-blush: #E8D5D5;
+
+    /* Fonts */
+    --font-serif: "Playfair Display", serif;
+    --font-sans: "Inter", sans-serif;
+
+    /* Container centered by default in v4 needs manual utility or plugin, but let's just add the class or use custom utility */
+}
+
+/* Custom Base Styles */
+body {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+}
+
+/* Re-adding container utility manually since v4 specific config is different */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 1200px;
+    /* Matching previous variable */
+}
+
+/* Custom Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
